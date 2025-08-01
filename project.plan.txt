@@ -1,0 +1,26 @@
+Phase 1: Homepage and Post Listing
+
+-Design and implement HTML structure for the homepage (index.html)
+-Create JavaScript code to load blog post data from local storage and display as a list
+-Implement CSS code for styling and a responsive layout
+
+Phase 2: Create Post Functionality
+
+-Design and implement HTML structure for creating blog posts (new-post.html)
+-This will include entering blog post titles, content and image additions
+-Create JavaScript code to save blog post data to local storage, and also form validation to ensure content is added before posting
+
+Phase 3: View and Edit Post Functionality
+
+-Design and implement HTML structure for displaying blog posts
+-Create JavaScript code to load the post date from local storage based on the post ID passed in the URL
+-Add an edit button that allows users to modify the post's title and content, and save changed in local storage
+
+Phase 4: Delete Functionality and Final Touches
+
+-Add a delete button on post.html to remove post from local storage
+-Test all previous Functionality
+
+Phase 5: Responsive Styling
+
+-Enhance CSS styling to make sure the layout adapts to mobile, tablet and desktop
