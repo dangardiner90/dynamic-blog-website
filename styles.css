@@ -1,0 +1,49 @@
+:root {
+    --first-colour: #84828f;
+    --second-colour: #6a687a;
+    --third-colour: #536271;
+    --fourth-colour: #3E4C5E;
+    --fifth-colour: #2C3D55;
+}
+
+
+body {
+    background-color: var(--fifth-colour);
+    font-family: 'Gill Sans Mt';
+    color: var(--first-colour);
+}
+
+header {
+    font-size: xx-large;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+footer {
+    position: static;
+    margin-bottom: 5px;
+    font-size: x-small;
+    text-align: center;
+    padding: 50px;
+    margin-top: 5px;
+}
+
+h2 {
+    text-align: center;
+    font-size: x-large;
+}
+
+.blog-area {
+    display: flex;
+    border: #536271 solid;
+    border-width: 3px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 70%;
+    height: 500px;
+}
+
+.posts-div {
+    font-size: medium;
+}
