@@ -34,7 +34,7 @@ h2 {
     font-size: x-large;
 }
 
-.blog-area {
+.blogArea {
     display: flex;
     border: #536271 solid;
     border-width: 3px;
@@ -42,8 +42,21 @@ h2 {
     padding: 20px;
     width: 70%;
     height: 500px;
+    color: white;
 }
 
-.posts-div {
-    font-size: medium;
+img {
+    max-width: 100px;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    border: 1px solid #ccc;
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 6px;
 }
