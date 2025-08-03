@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New Post</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="blog-crud.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Create a New Post</h1>
+    </header>
+
+    <div class="blogArea">
+        <form id="new-post" class="new-post">
+            <label for="title">Title your post: </label>
+            <input type="text" name="title" id="title" required>
+            <br>
+            <label for="content">Post body: </label>
+            <textarea name="content" id="content" rows="20" cols="60" required></textarea>
+            <br>
+            <label for="image">Attach an image to your post: </label>
+            <input type="file" name="image" id="image" accept="image/*">
+            <br>
+            <button type="submit">Post</button>
+        </form>
+
+    </div>
+
+    <footer>Daniel Gardiner 2025</footer>
+
+</body>
+</html>
