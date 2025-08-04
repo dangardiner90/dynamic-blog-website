@@ -60,3 +60,20 @@ li {
     padding: 1em;
     border-radius: 6px;
 }
+
+.navbar {
+    overflow: hidden;
+}
+
+.navbar a {
+    justify-content: center;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: var(--first-colour);
+}
+
+.navbar a:hover {
+    color: var(--second-colour);
+    background: var(--fourth-colour);
+}
