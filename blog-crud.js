@@ -1,40 +1,36 @@
 // Create posts
 
-document.getElementById('new-post').addEventListener('submit', function (e) {
-      e.preventDefault();
+document.getElementById('new-post').addEventListener('submit', function () {
 
-      const title = document.getElementById('title').value;
-      const content = document.getElementById('content').value;
-      const imageInput = document.getElementById('image');
-      const file = imageInput.files[0];
+  const title = document.getElementById('title').value;
+  const content = document.getElementById('content').value;
+  const image = document.getElementById('image');
+  const file = image.files[0];
 
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function () {
-          const imageData = reader.result;
-          savePost(title, content, imageData);
-        };
-        reader.readAsDataURL(file);
-      } else {
-        savePost(title, content, null);
-      }
+  function createBlog(title, content, imageSave) {
+    const post = {
+      id: Date.now(),
+      title,
+      content,
+      image: imageSave
+    };
+    const existingPosts = JSON.parse(localStorage.getItem('newPost'));
+    existingPosts.push(post);
+    localStorage.setItem('newPost', JSON.stringify(existingPosts));
+  }
 
-      function savePost(title, content, imageData) {
-        const post = {
-          id: Date.now(),
-          title,
-          content,
-          image: imageData
-        };
+  if (file) {
+    const readFile = new FileReader();
+    readFile.onload = function () {
+      const imageSave = readFile.result;
+      createBlog(title, content, imageSave);
+    };
+    readFile.readAsDataURL(file);
+  } else {
+    createBlog(title, content, null);
+  }
 
-        const existingPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
-        existingPosts.push(post);
-        localStorage.setItem('blogPosts', JSON.stringify(existingPosts));
-
-        alert('Post saved!');
-       
-      }
-    });
+});
 
 
 

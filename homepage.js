@@ -1,32 +1,26 @@
-const postsList = document.getElementById('blogDisplay');
+// Displaying posts on the home page
 
+const blogDisplay = document.getElementById('blogDisplay');
 
-const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+const posts = JSON.parse(localStorage.getItem('newPost'));
 
-if (posts.length === 0) {
+posts.forEach(post => {
     const li = document.createElement('li');
-    li.textContent = 'No posts found.';
-    postsList.appendChild(li);
-} else {
-    posts.reverse().forEach(post => {
-        const li = document.createElement('li');
+    blogDisplay.appendChild(li);
 
-        const titleEl = document.createElement('h2');
-        titleEl.textContent = post.title;
+    const title = document.createElement('h2');
+    title.textContent = post.title;
+    li.appendChild(title);
 
-        const contentEl = document.createElement('p');
-        contentEl.textContent = post.content;
+    const content = document.createElement('p');
+    content.textContent = post.content;
+    li.appendChild(content);
 
-        li.appendChild(titleEl);
-        li.appendChild(contentEl);
+    if (post.image) {
+        const img = document.createElement('img');
+        img.src = post.image;
+        img.alt = "Post image";
+        li.appendChild(img);
+    }
 
-        if (post.image) {
-            const imgEl = document.createElement('img');
-            imgEl.src = post.image;
-            imgEl.alt = "Post image";
-            li.appendChild(imgEl);
-        }
-
-        postsList.appendChild(li);
-    });
-}
+});

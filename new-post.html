@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,29 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="blog-crud.js"></script>
 </head>
+
 <body>
 
     <header>
         <h1>Create a New Post</h1>
 
-             <nav class="navbar">
-        <a href="index.html">View Posts</a>
-        <a href="new-post.html">Create Post</a>
-        <a href="post.html">Edit and Delete Posts</a>
-    </nav>
+        <nav class="navbar">
+            <a href="index.html">View Posts</a>
+            <a href="new-post.html">Create Post</a>
+            <a href="post.html">Edit and Delete Posts</a>
+        </nav>
     </header>
 
-  
+
 
     <div class="blogArea">
         <form id="new-post" class="new-post">
             <label for="title">Title your post: </label>
+            <br>
             <input type="text" name="title" id="title" required>
             <br>
             <label for="content">Post body: </label>
+            <br>
             <textarea name="content" id="content" rows="20" cols="60" required></textarea>
             <br>
             <label for="image">Attach an image to your post: </label>
@@ -40,4 +44,5 @@
     <footer>Daniel Gardiner 2025</footer>
 
 </body>
+
 </html>

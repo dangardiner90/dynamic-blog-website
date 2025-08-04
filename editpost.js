@@ -1,50 +1,59 @@
-  const container = document.getElementById('managePosts');
-    let posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+// Editing and deleting posts
 
-    function renderPosts() {
-      container.innerHTML = '';
+const editPosts = document.getElementById('editPosts');
+let blogPost = JSON.parse(localStorage.getItem('newPost'));
 
-      if (posts.length === 0) {
-        container.innerHTML = '<p>No posts to manage.</p>';
-        return;
-      }
 
-      posts.forEach(post => {
-        const postDiv = document.createElement('div');
-        postDiv.style.border = '1px solid #ccc';
-        postDiv.style.marginBottom = '1em';
-        postDiv.style.padding = '1em';
+function editBlog(id) {
+  const title = document.getElementById(`title-${id}`).value;
+  const content = document.getElementById(`content-${id}`).value;
 
-        postDiv.innerHTML = `
-          <input type="text" value="${post.title}" id="title-${post.id}" /><br><br>
-          <textarea rows="4" cols="40" id="content-${post.id}">${post.content}</textarea><br><br>
-          ${post.image ? `<img src="${post.image}" style="max-width:300px;"><br><br>` : ''}
-          <button onclick="updatePost(${post.id})">Save Changes</button>
-          <button onclick="deletePost(${post.id})">Delete</button>
-        `;
+  const index = blogPost.findIndex(p => p.id === id);
+  if (index !== -1) {
+    blogPost[index].title = title;
+    blogPost[index].content = content;
+    localStorage.setItem('newPost', JSON.stringify(blogPost));
+  }
+}
 
-        container.appendChild(postDiv);
-      });
-    }
+function delBlog(id) {
+  blogPost = blogPost.filter(p => p.id !== id);
+  localStorage.setItem('newPost', JSON.stringify(blogPost));
+  showPost();
+}
 
-    function updatePost(id) {
-      const title = document.getElementById(`title-${id}`).value;
-      const content = document.getElementById(`content-${id}`).value;
+function showPost() {
+  editPosts.innerHTML = '';
 
-      const index = posts.findIndex(p => p.id === id);
-      if (index !== -1) {
-        posts[index].title = title;
-        posts[index].content = content;
-        localStorage.setItem('blogPosts', JSON.stringify(posts));
-        alert('Post updated!');
-      }
-    }
+  blogPost.forEach(post => {
+    const postBox = document.createElement('div');
 
-    function deletePost(id) {
-      if (!confirm('Are you sure you want to delete this post?')) return;
-      posts = posts.filter(p => p.id !== id);
-      localStorage.setItem('blogPosts', JSON.stringify(posts));
-      renderPosts();
-    }
+    postBox.style.padding = '2em';
 
-    renderPosts();
+    postBox.innerHTML =
+
+      `<div style="display: flex; flex-direction: column; gap: 10px;">
+    <label>
+      <strong>Title:</strong><br>
+      <input type="text" id="title-${post.id}" value="${post.title}" style="width: 40%; padding: 6px;">
+    </label>
+
+    <label>
+      <strong>Content:</strong><br>
+      <textarea id="content-${post.id}" rows="6" style="width: 40%; padding: 6px;">${post.content}</textarea>
+    </label>
+
+    ${post.image ? `<div><strong>Image:</strong><br><img src="${post.image}" alt="Post image" style="max-width: 40%; border: 1px solid #aaa; border-radius: 4px;"></div>` : ''}
+
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+      <button onclick="editBlog(${post.id})" style="padding: 10px 10px;">✎ Edit</button>
+      <button onclick="delBlog(${post.id})" style="padding: 10px 10px;">👉🏻🗑️ Delete</button>
+    </div>
+  </div> `
+
+    editPosts.appendChild(postBox);
+  });
+
+}
+
+showPost();
